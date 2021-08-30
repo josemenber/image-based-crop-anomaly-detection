@@ -31,7 +31,7 @@ Images from the DeepWeeds dataset are available in the `images` folder. These im
 
 This code downloads a zipped file with the images from the dataset and unzips it into an `images` folder like the one in the repository.
 
-The Agriculture-Vision 2020 challenge dataset [2] is private and images cannot be included. However, they can be obtained by contacting the contest partners as explained [here](https://www.agriculture-vision.com/dataset-terms). Since the contest images are designed to perform pixel-level classification of anomalies, they need to be transformed to perform image-level classification. To do this, the `transform_images.py` script is used. This script is given the `--nrg` option to create the images with the NRG channels. By default uses RGB images. For help on how to run this script run the command using the `-h` option.
+The Agriculture-Vision 2020 challenge dataset [2] is private and images cannot be included. However, they can be obtained by contacting the contest partners as explained [here](https://www.agriculture-vision.com/agriculture-vision-2020/dataset). Since the contest images are designed to perform pixel-level classification of anomalies, they need to be transformed to perform image-level classification. To do this, the `transform_images.py` script is used. This script is given the `--nrg` option to create the images with the NRG channels. By default uses RGB images. For help on how to run this script run the command using the `-h` option.
 
 ## Download and evaluate models
 
