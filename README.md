@@ -6,11 +6,9 @@ The contents of this repository are released under an [Apache 2 license](https:/
 
 ## Data organization
 
-Images are assigned unique filenames that include the date/time the image was photographed and an ID number for the instrument which produced the image. The format is like so: `YYYYMMDD-HHMMSS-ID`, where the ID is simply an integer from 0 to 3. The unique filenames are strings of 17 characters, such as 20170320-093423-1.
+Images of DeepWeeds dataset are assigned unique filenames that include the date/time the image was photographed and an ID number for the instrument which produced the image. The format is like so: `YYYYMMDD-HHMMSS-ID`, where the ID is simply an integer from 0 to 3. The unique filenames are strings of 17 characters, such as 20170320-093423-1.
 
-## Labels
-
-The `labels.csv` file assigns species labels to each image. It is a comma separated text file in the format:
+The `labels.csv` file from the labels folder assigns species labels to each image. It is a comma separated text file in the format:
 
 ```
 Filename,Label,Species
@@ -20,6 +18,8 @@ Filename,Label,Species
 20180119-105722-1.jpg,8,Negative
 ...
 ```
+
+The images of the Agriculture-Vision 2020 challenge dataset are divided into 3 folders: training, validation and test. Each folder has binary masks to select the valid pixels of each image, and also the regions containing the anomalies. The test folder does not have the labels because the predictions are used to evaluate the performance of the models.
 
 ## Download images
 
@@ -69,17 +69,19 @@ For help on how to run this script execute the command:
 
 ## Train and test models
 
-`train_models.py` python script trains and evaluates Keras base implementation of ResNet50 and InceptionV3 on the DeepWeeds dataset, pre-trained with ImageNet weights.This script receives two parameters:
+To train the models and evaluate their performance on both datasets, the Python script `train_models.py` is used. This script receives 5 parameters:
 
-* `--noise`: to add gaussian noise to the images (default is not applied).
+* `--agriculture`: to train the models on the Agriculture-Vision dataset. By default the DeepWeeds dataset is used.
 
-* `--augmentation`: to add the new images previously generated with the script *generate_imapges.py*  (default is not applied).
+* `--noise`: to add Gaussian noise to the images (by default not applied).
+
+* `--augmentation`: to add the new images previously generated with the *generate_imapges.py* script (not applied by default).
 
 * `--model modelname`: to indicate the model name. *Modelname* takes the values: 'resnet-50' or 'inception-v3'.
     
 * `--max_epochs N`: where N is an integer indicating the maximum number of epochs for training.
 
-For help on how to run this script execute the command:
+For help on how to run this script, run the command:
 
 ```
     python3 train_models.py -h
