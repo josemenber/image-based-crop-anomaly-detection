@@ -1,6 +1,6 @@
 # Image-based crop anomaly detection using Artificial Intelligence techniques
 
-This repository makes available the source code and public dataset for the review of work, "DeepWeeds: A Multiclass Weed Species Image Dataset for Deep Learning", published with open access by Scientific Reports: https://www.nature.com/articles/s41598-018-38343-3. The DeepWeeds dataset consists of 17,509 images capturing eight different weed species native to Australia in situ with neighbouring flora. In this work, we present an improvement over the initial work. The dataset was classified to an average accuracy of 96.6 % with the ResNet50 deep convolutional neural network and an average accuracy of 95.6 % with the Inception-v3 model.
+This repository makes available the source code and methodology of the work: "Crop anomaly detection through images using Artificial Intelligence techniques". This paper presents a methodology for the classification of crop anomalies at the image level. Evaluated the performance of two deep learning models such as Inception-v3 and ResNet-50 on the DeepWeeds and Agriculture-Vision challenge 2020 datasets. These models achieved an average classification accuracy of 95.6% and 96.6% respectively on the DeepWeeds dataset, improving on the 95.1% and 95.7% results obtained by [1]. For the Agriculture-Vision 2020 challenge dataset [2], an average classification accuracy of 95.3% was achieved with Inception-v3 and 94.3% with ResNet-50. In addition, the inference times of the models were calculated with an average time of 10 ms for DeepWeeds and 50 ms for the Agriculture-Vision dataset.
 
 The contents of this repository are released under an [Apache 2 license](https://github.com/josemenber/image-based-crop-anomaly-detection/blob/master/LICENSE).
 
@@ -23,23 +23,32 @@ Filename,Label,Species
 
 ## Download images
 
-The images are available for download in the repository (images folder). You can also use the python script created to download automatically by executing the following command: 
+Images from the DeepWeeds dataset are available in the `images` folder. These images can also be downloaded by running the `download_images.py` script. The script does not receive any parameters and is executed:
 
 ```
     python3 download_images.py
 ```
 
-This command will download and unzip a file containing the images.
+This code downloads a zipped file with the images from the dataset and unzips it into an `images` folder like the one in the repository.
+
+The Agriculture-Vision 2020 challenge dataset [2] is private and images cannot be included. However, they can be obtained by contacting the contest partners as explained [here](https://www.agriculture-vision.com/dataset-terms).
 
 ## Download and evaluate models
 
-We provide the most successful ResNet50 and InceptionV3 models saved in Keras hdf5 model format. Due to the size of the models they are hosted outside of the Github repository. The models must be downloaded [here](https://drive.google.com/file/d/1tGmL8fX2pdlkjepKWdfw_I1pFpRXnd2S/view?usp=sharing) (496.7MB). 
+We provide the most successful ResNet50 and InceptionV3 models saved in Keras hdf5 model format for each dataset. Due to the size of the models they are hosted outside of the Github repository. The models must be downloaded:
 
-When downloading the file you have to unzip it inside the repository folder. Once unzipped you can test the models by running the command: 
+* [DeepWeeds models](https://drive.google.com/file/d/1tGmL8fX2pdlkjepKWdfw_I1pFpRXnd2S/view?usp=sharing) (496.7MB).
+
+* [Agriculture-Vision models](https://drive.google.com/file/d/1SIasRRfTW9E10Z0jUbyx1ygNv14xpnaj/view?usp=sharing) (504.7 MB). 
+
+When you download the file you have to unzip it inside the repository folder. Once unzipped you can test the models by running the command:
 
 ```
     python3 eval_models.py
 ```
+
+to evaluate the models on the DeepWeeds dataset, or by adding the `--agriculture` parameter to evaluate the performance of the models on the Agriculture-Vision dataset. For help on how to run this script run the `python3 eval_models.py -h` command.
+
 
 ## Generate new anomaly images
 
