@@ -1,6 +1,6 @@
 # Image-based crop anomaly detection using Artificial Intelligence techniques
 
-This repository makes available the source code and methodology of the work: "Crop anomaly detection through images using Artificial Intelligence techniques". This paper presents a methodology for the classification of crop anomalies at the image level. Evaluated the performance of two deep learning models such as Inception-v3 and ResNet-50 on the DeepWeeds and Agriculture-Vision challenge 2020 datasets. These models achieved an average classification accuracy of 95.6% and 96.6% respectively on the DeepWeeds dataset, improving on the 95.1% and 95.7% results obtained by [1]. For the Agriculture-Vision 2020 challenge dataset [2], an average classification accuracy of 95.3% was achieved with Inception-v3 and 94.3% with ResNet-50. In addition, the inference times of the models were calculated with an average time of 10 ms for DeepWeeds and 50 ms for the Agriculture-Vision dataset. This demonstrates that the real-time implementation of such complex models for the automatic detection of crop anomalies is feasible.
+This repository makes available the source code and methodology of the work: "A general methodology for image-based anomaly detection in smart agriculture". This paper presents a methodology for the classification of crop anomalies at the image level. Evaluated the performance of foue deep learning models such as VGG16, Inception-v3, ResNet-50 and Xception on the DeepWeeds and Agriculture-Vision challenge 2020 datasets. These models achieved an average classification accuracy of 95.6% and 96.6% respectively on the DeepWeeds dataset, improving on the 95.1% and 95.7% results obtained by [1]. For the Agriculture-Vision 2020 challenge dataset [2], an average classification accuracy of 95.3% was achieved with Inception-v3 and 94.3% with ResNet-50. In addition, the inference times of the models were calculated with an average time of 10 ms for DeepWeeds and 50 ms for the Agriculture-Vision dataset. This demonstrates that the real-time implementation of such complex models for the automatic detection of crop anomalies is feasible.
 
 The contents of this repository are released under an [Apache 2 license](https://github.com/josemenber/image-based-crop-anomaly-detection/blob/master/LICENSE).
 
@@ -77,7 +77,7 @@ To train the models and evaluate their performance on both datasets, the Python 
 
 * `--augmentation`: to add the new images previously generated with the *generate_imapges.py* script (not applied by default).
 
-* `--model modelname`: to indicate the model name. *Modelname* takes the values: 'resnet-50' or 'inception-v3'.
+* `--model modelname`: to indicate the model name. *Modelname* takes the values: 'vgg16', 'resnet-50', 'inception-v3' or 'xception' (default).
     
 * `--max_epochs N`: where N is an integer indicating the maximum number of epochs for training.
 
