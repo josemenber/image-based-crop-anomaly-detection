@@ -2,7 +2,9 @@ from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau, T
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 from keras.preprocessing.image import ImageDataGenerator
 from keras.applications.inception_v3 import InceptionV3
+from keras.applications.xception import Xception
 from keras.applications.resnet50 import ResNet50
+from keras.applications.vgg16 import VGG16
 from keras.layers import Dense, GlobalAveragePooling2D
 from sklearn.model_selection import train_test_split
 from keras.models import Model, load_model
@@ -28,11 +30,11 @@ import pytz
 
 # Script arguments
 def parse_args():
-    parser = argparse.ArgumentParser(description='Train and test ResNet50 or InceptionV3 models on DeepWeeds or Agriculture-Vision datasets.')
+    parser = argparse.ArgumentParser(description='Train and test VGG16, ResNet50, InceptionV3 and Xception models on DeepWeeds or Agriculture-Vision datasets.')
     parser.add_argument("--agriculture", action='store_true', default=False, help="Train models on the Agriculture-Vision 2020 dataset. By default it uses the DeepWeeds dataset.")
     parser.add_argument("--noise", action='store_true', default=False, help="Apply noise to images.")
     parser.add_argument("--augmentation", action='store_true', default=False, help="Apply data augmentation to images.")
-    parser.add_argument('--model', default='resnet-50', help="'resnet-50' or 'inception-v3'.")
+    parser.add_argument('--model', default='xception', help="'vgg16', 'resnet-50', 'inception-v3' or xception.")
     parser.add_argument('--max_epochs', type=int, default=500, help="Maximum number of epochs.")
     args = parser.parse_args()
     return args.agriculture ,args.noise, args.augmentation, args.model, args.max_epochs
@@ -200,11 +202,15 @@ if(not agriculture):
     # Crop augmented images from 256x256 to 224x224 for DeepWeeds
     train_data_generator = crop_generator(train_data_generator, crop_size)
 
-# Load ImageNet pre-trained model with no top, either InceptionV3 or ResNet50 (default)
+# Load ImageNet pre-trained model with no top, either VGG16, InceptionV3, ResNet50 or Xception (default)
 if(modelname == 'inception-v3'):
     base_model = InceptionV3(weights='imagenet', include_top=False, input_shape=model_input)
-else:
+elif(modelname == 'resnet-50'):
     base_model = ResNet50(weights='imagenet', include_top=False, input_shape=model_input)
+elif(modelname == 'vgg16'):
+    base_model = VGG16(weights='imagenet', include_top=False, input_shape=model_input)    
+else:
+    base_model = Xception(weights='imagenet', include_top=False, input_shape=model_input)
     
 x = base_model.output
 

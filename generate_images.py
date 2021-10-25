@@ -30,6 +30,7 @@ if(agriculture):
     
     # Read training file
     df = pd.read_csv("train.csv")
+    test_size=0.2
     
     # Params
     img_directory = './train_images/'
@@ -41,6 +42,7 @@ else:
     
     # Read label file
     df = pd.read_csv("labels/labels.csv")
+    test_size=0.4
 
     # Params
     img_directory = './images/'
@@ -48,7 +50,7 @@ else:
     
 
 # Select the train images
-train_index, val_index = train_test_split(df.index, test_size=0.2, random_state=SEED_VALUE, shuffle=True, stratify=df['Label'])
+train_index, val_index = train_test_split(df.index, test_size=test_size, random_state=SEED_VALUE, shuffle=True, stratify=df['Label'])
 train_dataframe = df.loc[train_index, ]
 
 # Create new image directories

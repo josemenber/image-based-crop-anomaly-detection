@@ -35,8 +35,8 @@ else:
     df = pd.read_csv("./labels/labels.csv")
 
     # Split data: train (60%), validation(20%) and test (20%)
-    train_index, test_index = train_test_split(df.index, test_size=0.4, random_state=SEED_VALUE, shuffle=True)
-    val_index, test_index = train_test_split(test_index, test_size=0.5, random_state=SEED_VALUE, shuffle=True)
+    train_index, test_index = train_test_split(df.index, test_size=0.4, random_state=SEED_VALUE, shuffle=True, stratify=df['Label'])
+    val_index, test_index = train_test_split(test_index, test_size=0.5, random_state=SEED_VALUE, shuffle=True, stratify=df.loc[test_index, 'Label'])
 
     test_dataframe = df.loc[test_index, ]
     img_size = (224, 224)
