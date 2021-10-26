@@ -1,6 +1,6 @@
 # Image-based crop anomaly detection using Artificial Intelligence techniques
 
-This repository makes available the source code and methodology of the work: "A general methodology for image-based anomaly detection in smart agriculture". This paper presents a methodology for the classification of crop anomalies at the image level. Evaluated the performance of foue deep learning models such as VGG16, Inception-v3, ResNet-50 and Xception on the DeepWeeds and Agriculture-Vision challenge 2020 datasets. These models achieved an average classification accuracy of 95.6% and 96.6% respectively on the DeepWeeds dataset, improving on the 95.1% and 95.7% results obtained by [1]. For the Agriculture-Vision 2020 challenge dataset [2], an average classification accuracy of 95.3% was achieved with Inception-v3 and 94.3% with ResNet-50. In addition, the inference times of the models were calculated with an average time of 10 ms for DeepWeeds and 50 ms for the Agriculture-Vision dataset. This demonstrates that the real-time implementation of such complex models for the automatic detection of crop anomalies is feasible.
+This repository makes available the source code and methodology of the work: "A general methodology for image-based anomaly detection in smart agriculture". This paper presents a methodology for the classification of crop anomalies at the image level. Evaluated the performance of four deep learning models such as VGG16, Inception-v3, ResNet-50 and Xception on the DeepWeeds [1] and Agriculture-Vision challenge 2020 [2] datasets. Using the methodology proposed here, an average accuracy of 98.0% was achieved on the DeepWeeds dataset and 95.3% on the Agriculture-Vision dataset, with false positive rates of 1.32% and 2.52% respectively. These results improve the average accuracy by 2.3% and the false positive rate by 0.84% compared to the state-of-the-art results. In addition, the inference times of the models were calculated with an average time of 10 ms for DeepWeeds and 50 ms for the Agriculture-Vision dataset. This demonstrates that the real-time implementation of such complex models for the automatic detection of crop anomalies is feasible.
 
 The contents of this repository are released under an [Apache 2 license](https://github.com/josemenber/image-based-crop-anomaly-detection/blob/master/LICENSE).
 
@@ -35,11 +35,11 @@ The Agriculture-Vision 2020 challenge dataset [2] is private and images cannot b
 
 ## Download and evaluate models
 
-We provide the most successful ResNet50 and InceptionV3 models saved in Keras hdf5 model format for each dataset. Due to the size of the models they are hosted outside of the Github repository. The models must be downloaded:
+We provide the most successful models saved in Keras hdf5 model format for each dataset. Due to the size of the models they are hosted outside of the Github repository. The models must be downloaded:
 
-* [DeepWeeds models](https://drive.google.com/file/d/1tGmL8fX2pdlkjepKWdfw_I1pFpRXnd2S/view?usp=sharing) (496.7MB).
+* [DeepWeeds models](https://drive.google.com/file/d/1U1wHVmbUdPaJW1e-9EbgIutbtrDt-Lzm/view?usp=sharing) (493.8 MB).
 
-* [Agriculture-Vision models](https://drive.google.com/file/d/1SIasRRfTW9E10Z0jUbyx1ygNv14xpnaj/view?usp=sharing) (504.7 MB). 
+* [Agriculture-Vision models](https://drive.google.com/file/d/1Z0infbYoIpIw3oN7csnfu4Yl_VAW_ohp/view?usp=sharing) (241.5 MB). 
 
 When you download the file you have to unzip it inside the repository folder. Once unzipped you can test the models by running the command:
 
@@ -77,7 +77,7 @@ To train the models and evaluate their performance on both datasets, the Python 
 
 * `--augmentation`: to add the new images previously generated with the *generate_imapges.py* script (not applied by default).
 
-* `--model modelname`: to indicate the model name. *Modelname* takes the values: 'vgg16', 'resnet-50', 'inception-v3' or 'xception' (default).
+* `--model modelname`: to indicate the model name. *Modelname* takes the values: 'vgg16', 'inception-v3', 'resnet-50' or 'xception' (default).
     
 * `--max_epochs N`: where N is an integer indicating the maximum number of epochs for training.
 
